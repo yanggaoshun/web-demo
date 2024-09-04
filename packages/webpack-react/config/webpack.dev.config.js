@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "development",
-  devtool: 'eval-cheap-module-source-map',
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -19,6 +19,12 @@ module.exports = merge(common, {
       {
         test: /\.s[ac]ss$/,
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+      },
+      {
+        enforce: "pre",
+        exclude: /@babel(?:\/|\\{1,2})runtime/,
+        test: /\.(js|mjs|jsx|ts|tsx|css)$/,
+        loader: "source-map-loader",
       },
     ],
   },

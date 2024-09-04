@@ -4,6 +4,7 @@ specifiers:
   '@babel/core': ^7.25.2
   '@babel/plugin-proposal-class-properties': ^7.18.6
   '@babel/plugin-transform-runtime': ^7.25.4
+  '@babel/plugin-transform-typescript': ^7.25.2
   '@babel/preset-env': ^7.25.4
   '@babel/preset-react': ^7.24.7
   '@babel/runtime': ^7.25.4
@@ -23,6 +24,7 @@ specifiers:
   react-dom: ^18.3.1
   sass: ^1.77.8
   sass-loader: ^16.0.1
+  source-map-loader: ^5.0.0
   style-loader: ^4.0.0
   terser-webpack-plugin: ^5.3.10
   ts-loader: ^9.5.1
@@ -41,6 +43,7 @@ devDependencies:
   '@babel/core': 7.25.2
   '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.25.2
   '@babel/plugin-transform-runtime': 7.25.4_@babel+core@7.25.2
+  '@babel/plugin-transform-typescript': 7.25.2_@babel+core@7.25.2
   '@babel/preset-env': 7.25.4_@babel+core@7.25.2
   '@babel/preset-react': 7.24.7_@babel+core@7.25.2
   '@babel/runtime': 7.25.4
@@ -58,6 +61,7 @@ devDependencies:
   postcss-loader: 8.1.1_qw474pdsod63f5gunhr6h6gu2y
   sass: 1.77.8
   sass-loader: 16.0.1_sass@1.77.8+webpack@5.94.0
+  source-map-loader: 5.0.0_webpack@5.94.0
   style-loader: 4.0.0_webpack@5.94.0
   terser-webpack-plugin: 5.3.10_webpack@5.94.0
   ts-loader: 9.5.1_5veiy7j3jzgjdisjgnxs7c5kaq
@@ -586,6 +590,16 @@ packages:
 
   /@babel/plugin-syntax-top-level-await/7.14.5_@babel+core@7.25.2:
     resolution: {integrity: sha1-wc/a3DWmRiQAAfBhOCR7dBw02Uw=}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.25.2
+      '@babel/helper-plugin-utils': 7.24.8
+    dev: true
+
+  /@babel/plugin-syntax-typescript/7.25.4_@babel+core@7.25.2:
+    resolution: {integrity: sha512-uMOCoHVU52BsSWxPOMVv5qKRdeSlPuImUCB2dlPuBSU+W2/ROE7/Zg8F2Kepbk+8yBa68LlRKxO+xgEVWorsDg==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
@@ -1200,6 +1214,22 @@ packages:
     dependencies:
       '@babel/core': 7.25.2
       '@babel/helper-plugin-utils': 7.24.8
+    dev: true
+
+  /@babel/plugin-transform-typescript/7.25.2_@babel+core@7.25.2:
+    resolution: {integrity: sha512-lBwRvjSmqiMYe/pS0+1gggjJleUJi7NzjvQ1Fkqtt69hBa/0t1YuW/MLQMAPixfwaQOHUXsd6jeU3Z+vdGv3+A==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.25.2
+      '@babel/helper-annotate-as-pure': 7.24.7
+      '@babel/helper-create-class-features-plugin': 7.25.4_@babel+core@7.25.2
+      '@babel/helper-plugin-utils': 7.24.8
+      '@babel/helper-skip-transparent-expression-wrappers': 7.24.7
+      '@babel/plugin-syntax-typescript': 7.25.4_@babel+core@7.25.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@babel/plugin-transform-unicode-escapes/7.24.7_@babel+core@7.25.2:
@@ -2749,7 +2779,7 @@ packages:
     dev: true
 
   /emoji-regex/8.0.0:
-    resolution: {integrity: sha1-6Bj9ac5cz8tARZT4QpY79TFkzDc=}
+    resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
     dev: true
 
   /emoji-regex/9.2.2:
@@ -2795,7 +2825,7 @@ packages:
     dev: true
 
   /errno/0.1.8:
-    resolution: {integrity: sha1-i7Ppx9Rjvkl2/4iPdrSAnrwugR8=}
+    resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==}
     hasBin: true
     requiresBuild: true
     dependencies:
@@ -3320,19 +3350,18 @@ packages:
     dev: true
 
   /iconv-lite/0.4.24:
-    resolution: {integrity: sha1-ICK0sl+93CHS9SSXSkdKr+czkIs=}
+    resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
     dev: true
 
   /iconv-lite/0.6.3:
-    resolution: {integrity: sha1-pS+AvzjaGVLrXGgXkHGYcaGnJQE=}
+    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
     dependencies:
       safer-buffer: 2.1.2
     dev: true
-    optional: true
 
   /icss-utils/5.1.0_postcss@8.4.41:
     resolution: {integrity: sha1-xr5oWKvQE9do6YNmrkfiXViHsa4=}
@@ -3344,7 +3373,7 @@ packages:
     dev: true
 
   /image-size/0.5.5:
-    resolution: {integrity: sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=}
+    resolution: {integrity: sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     requiresBuild: true
@@ -3432,7 +3461,7 @@ packages:
     dev: true
 
   /is-fullwidth-code-point/3.0.0:
-    resolution: {integrity: sha1-8Rb4Bk/pCz94RKOJl8C3UFEmnx0=}
+    resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
     engines: {node: '>=8'}
     dev: true
 
@@ -3728,7 +3757,7 @@ packages:
     dev: true
 
   /make-dir/2.1.0:
-    resolution: {integrity: sha1-XwMQ4YuL6JjMBwCSlaMK5B6R5vU=}
+    resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
     requiresBuild: true
     dependencies:
@@ -3794,7 +3823,7 @@ packages:
     dev: true
 
   /mime/1.6.0:
-    resolution: {integrity: sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=}
+    resolution: {integrity: sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==}
     engines: {node: '>=4'}
     hasBin: true
     dev: true
@@ -4975,6 +5004,17 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /source-map-loader/5.0.0_webpack@5.94.0:
+    resolution: {integrity: sha512-k2Dur7CbSLcAH73sBcIkV5xjPV4SzqO1NJ7+XaQl8if3VODDUj3FNchNGpqgJSKbvUfJuhVdv8K2Eu8/TNl2eA==}
+    engines: {node: '>= 18.12.0'}
+    peerDependencies:
+      webpack: ^5.72.1
+    dependencies:
+      iconv-lite: 0.6.3
+      source-map-js: 1.2.0
+      webpack: 5.94.0_webpack-cli@5.1.4
+    dev: true
+
   /source-map-support/0.5.21:
     resolution: {integrity: sha1-BP58f54e0tZiIzwoyys1ufY/bk8=}
     dependencies:
@@ -5029,7 +5069,7 @@ packages:
     dev: true
 
   /string-width/4.2.3:
-    resolution: {integrity: sha1-JpxxF9J7Ba0uU2gwqOyJXvnG0BA=}
+    resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
     dependencies:
       emoji-regex: 8.0.0
@@ -5547,7 +5587,7 @@ packages:
     dev: true
 
   /wrap-ansi/7.0.0:
-    resolution: {integrity: sha1-Z+FFz/UQpqaYS98RUpEdadLrnkM=}
+    resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
     dependencies:
       ansi-styles: 4.3.0
